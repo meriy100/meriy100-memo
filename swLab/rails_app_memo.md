@@ -1,3 +1,14 @@
+
+
+```ruby
+# .rbenv gem の保存場所
+.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/
+
+# content_tag の場所
+actionview/lib/action_view/helpers/tag_helper.rb
+```
+
+
 - ロケール辞書が役割ごとに区別されてる
 https://github.com/ricodigo/shapado.git
 
