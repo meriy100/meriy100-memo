@@ -20,6 +20,27 @@ https://github.com/fatfreecrm/fat_free_crm
 - まだ国際化対応していないものについても考える
 
 
+## html_escape をやってる場所
+```
+actionview/lib/action_view/buffers.rb
+```
+
+## hash array の対処
+
+- I18n.t の引数が String 意外の場合 match が使えない
+- エラー検出をちゃんとやるか Hash Array に match を実装(<= これは馬鹿らしい)
+
+
+## lの処理
+- 現状localeze が使えない
+
+## String への実装
+- html_escape 同様に String へ実装することが必要
+
+
+
+---
+# 以下 雑メモ
 
 
 >gr html_escape actionview/lib/action_view/
@@ -105,5 +126,108 @@ end
 
     ...
 
+```
+
+
+```ruby
+
+From: /home/kouta/thesis/app/app-4-2-3-write/app/views/plans/index.html.erb @ line 50 ActionView::CompiledTemplates#_app_views_plans_index_html_erb___971184520513241304_70163052236100:
+
+45:     </div>
+46:   </div>
+47: </div>
+48:
+49: <%=  binding.pry%>
+=> 50: <%=  'hello' %>
+51:
+52: <%= link_to '日本語', plans_path(locale: :ja), class: 'btn btn-warning' %>
+53: <%= link_to 'English', plans_path(locale: :en), class: 'btn btn-success' %>
+54:
+
+[1] pry(#<#<Class:0x007fa037a53aa0>>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionview-4.2.3/lib/action_view/buffers.rb @ line 11 ActionView::OutputBuffer#<<:
+
+10: def <<(value)
+=> 11:   return self if value.nil?
+12:   super(value.to_s)
+13: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionview-4.2.3/lib/action_view/buffers.rb @ line 12 ActionView::OutputBuffer#<<:
+
+10: def <<(value)
+11:   return self if value.nil?
+=> 12:   super(value.to_s)
+13: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 186 ActiveSupport::SafeBuffer#concat:
+
+185: def concat(value)
+=> 186:   super(html_escape_interpolated_argument(value))
+187: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 248 ActiveSupport::SafeBuffer#html_escape_interpolated_argument:
+
+247: def html_escape_interpolated_argument(arg)
+=> 248:   (!html_safe? || arg.html_safe?) ? arg :
+249:     arg.to_s.gsub(ERB::Util::HTML_ESCAPE_REGEXP, ERB::Util::HTML_ESCAPE)
+250: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 215 ActiveSupport::SafeBuffer#html_safe?:
+
+214: def html_safe?
+=> 215:   defined?(@html_safe) && @html_safe
+216: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 122 Object#html_safe?:
+
+121: def html_safe?
+=> 122:   false
+123: end
+
+[1] pry("hello")> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 249 ActiveSupport::SafeBuffer#html_escape_interpolated_argument:
+
+247: def html_escape_interpolated_argument(arg)
+248:   (!html_safe? || arg.html_safe?) ? arg :
+=> 249:     arg.to_s.gsub(ERB::Util::HTML_ESCAPE_REGEXP, ERB::Util::HTML_ESCAPE)
+250: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 167 ActiveSupport::SafeBuffer#safe_concat:
+
+166: def safe_concat(value)
+=> 167:   raise SafeConcatError unless html_safe?
+168:   original_concat(value)
+169: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 215 ActiveSupport::SafeBuffer#html_safe?:
+
+214: def html_safe?
+=> 215:   defined?(@html_safe) && @html_safe
+216: end
+
+[1] pry(#<ActionView::OutputBuffer>)> step
+
+From: /home/kouta/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/activesupport-4.2.3/lib/active_support/core_ext/string/output_safety.rb @ line 168 ActiveSupport::SafeBuffer#safe_concat:
+
+166: def safe_concat(value)
+167:   raise SafeConcatError unless html_safe?
+=> 168:   original_concat(value)
+169: end
 ```
 
