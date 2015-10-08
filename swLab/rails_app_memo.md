@@ -74,5 +74,36 @@ end
 ```
 
 
+## html_escape を利用する SafeBuffer << String メソッド
 
+```ruby
+# activesupport/lib/active_support/core_ext/string/output_safety.rb
+    
+    ...
+    
+    def concat(value)
+      super(html_escape_interpolated_argument(value))
+    end
+    alias << concat
+
+    def prepend(value)
+      super(html_escape_interpolated_argument(value))
+    end
+
+    ...
+
+    def %(args)
+      case args
+      when Hash
+        escaped_args = Hash[args.map { |k,arg| [k, html_escape_interpolated_argument(arg)] }]
+      else
+        escaped_args = Array(args).map { |arg| html_escape_interpolated_argument(arg) }
+      end
+
+      self.class.new(super(escaped_args))
+    end
+
+    ...
+
+```
 
