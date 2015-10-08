@@ -45,11 +45,11 @@ actionview/lib/action_view/helpers/url_helper.rb:414
 
 ```ruby
 # actionview/lib/action_view/helpers/text_helper.rb
- def truncate(text, options = {}, &block)
-   if text
-   length  = options.fetch(:length, 30)
-   content = text.truncate(length, options)
-   content = options[:escape] == false ? content.html_safe : ERB::Util.html_escape(content)
+def truncate(text, options = {}, &block)
+  if text
+    length  = options.fetch(:length, 30)
+    content = text.truncate(length, options)
+    content = options[:escape] == false ? content.html_safe : ERB::Util.html_escape(content)
     content << capture(&block) if block_given? && text.length > length
     content
   end
