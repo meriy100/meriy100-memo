@@ -51,13 +51,13 @@ Hash model
 |-|-|-|-|-|
 |name|string|費目名|default null| |
 |user_id|integer|ユーザID|not null | |
-|category_id|integer| |not null | |
+|category====_id|integer| |not null | |
 |sub_category_id|integer | |default null| |
 |price|integer|金額|not null| |
 |remarks|text|備考|default null| |
 |wallets_id|integer|財布ID|default null|基本的に出費する財布の指定|
 
-## short_cut_contents
+## short_ccs
 ### ショートカット項目?
 
 |物理名|型|論理名|オプション|備考|
@@ -66,12 +66,12 @@ Hash model
 |category_id|integer|カテゴリID|not null| |
 |sub_category_id|integer|サブカテゴリID|default null| |
 
-## short_cut_prices
+## short_cps
 ### 項目用値段?
 
 |物理名|型|論理名|オプション|備考|
 |-|-|-|-|-|
-|short_cut_content_id|integer|ショートカットID|not null | |
+|short_cc_id|integer|ショートカットID|not null | |
 |user_id|integer|ユーザID|not null| |
 |price|integer|値段|not null| |
 
