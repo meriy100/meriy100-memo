@@ -37,6 +37,9 @@ actionview/lib/action_view/buffers.rb
 ## String への実装
 - html_escape 同様に String へ実装することが必要
 
+## @virtual path
+.で始まるときの vartual path の処理
+
 ## tlansrate helper 実装場所
 actionview/lib/action_view/helpers/translation_helper.rb 
 
