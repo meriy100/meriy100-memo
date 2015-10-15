@@ -39,6 +39,7 @@ actionview/lib/action_view/buffers.rb
 
 ## @virtual path
 .で始まるときの vartual path の処理
+helper の要素を組み込まないと無理かも?
 
 ## tlansrate helper 実装場所
 actionview/lib/action_view/helpers/translation_helper.rb 
