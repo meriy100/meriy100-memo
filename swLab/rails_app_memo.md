@@ -45,6 +45,15 @@ helper の要素を組み込まないと無理かも?
 actionview/lib/action_view/helpers/translation_helper.rb 
 
 ---
+
+# めちゃんこいいアイディア
+
+model のカラムに
+..._en ..._ja ..._da
+などでlocale ごとに置き換えたらどうかな
+
+
+---
 # 以下 雑メモ
 
 
