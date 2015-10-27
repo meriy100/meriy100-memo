@@ -85,3 +85,8 @@ $(function() {
       reader.readAsDataURL file
 ```
 
+### 見積もりのプレビューとかに使えるかも
+１，pdf生成(gem: wicked_pdf)
+２，アップロード(gem: paperclip)
+３，表示(image_tagか何かで２でuploadしたものを呼び出す)
+
