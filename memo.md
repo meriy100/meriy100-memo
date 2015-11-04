@@ -3,6 +3,7 @@ UbuntuにインストールしたVimでクリップボード共有する方法
 $ sudo apt-get -y install vim-gtk vim-athena vim-gnome
 ```
 
+
 ```sh
 rails generate migration AddDetailsToTitles price:integer author:string
 ```
@@ -89,4 +90,27 @@ $(function() {
 １，pdf生成(gem: wicked_pdf)
 ２，アップロード(gem: paperclip)
 ３，表示(image_tagか何かで２でuploadしたものを呼び出す)
+
+### jquery select box の選択されたものを取得
+
+```erb
+<select name='alphabet'>
+    <option value='ABC'>えーびーしー</option>
+    <option value='DEF'>でーいーえふ</option>
+    <option value='GHI'>じーえいちあい</option>
+    <option value='JKL'>じぇーけーえる</option>
+</select>
+```
+
+```js
+$('[name=alphabet]').change(function() {
+    // 選択されているvalue属性値を取り出す
+    var val = $('[name=alphabet]').val();
+    console.log(val); // 出力：ABC
+    // 選択されている表示文字列を取り出す
+    var txt = $('[name=alphabet] option:selected').text();
+    console.log(txt); // 出力：えーびーしー
+});
+```
+http://qiita.com/tomcky/items/8f1868f1fb963732de39
 
