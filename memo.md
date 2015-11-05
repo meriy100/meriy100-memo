@@ -69,7 +69,7 @@ $(function() {
 
 ### 画像 選択 サムネイル
 
-```coffee-script
+```coffee
 @image_update = ->
   $(".upload_image").each (i, elem) ->
     $(elem).after "<span class=\"image-thumbnail image-index-" + i + "\" ></span>"
@@ -114,3 +114,10 @@ $('[name=alphabet]').change(function() {
 ```
 http://qiita.com/tomcky/items/8f1868f1fb963732de39
 
+```sh
+- [x]
+- [ ]
+```
+
+- [x]
+- [ ]
