@@ -103,4 +103,29 @@ git clone https://github.com/tomasr/molokai
 mv molokai/colors/molokai.vim ~/.vim/colors/
 ````
 
+- クリップボード
+`sudo apt-get -y install vim-gtk vim-athena vim-gnome`
+> もう少ししらべてみる
+
+## Git hub の ssh
+http://qiita.com/katsukii/items/9fd5bbe822904d7cdd0a
+をみて
+
+## その他
+- tree
+- colordiff
+
+---
+# 明日やることsv
+- ruby
+- rails
+- texlive
+ - latexmk
+- svn インストールはした
+- ほか思いついたこと
+
+* * *
+
+# ここからが本番 Rails 環境を整える!
+
 
