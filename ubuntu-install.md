@@ -1,4 +1,11 @@
 # Ubuntu14.04 インストール時 にやること
+
+2015/11/07
+現在の git home
+https://github.com/meriy100/meriy100-memo.git
+commit `eb58b4c6477d0885e86e890a0fed8752af272fb7`
+
+
 ## このメモを書くために
 - google chrome install
 - git install
@@ -67,7 +74,8 @@ perl ./256colors2.pl
 ```
 sudo apt-get install tmux
 ```
-
+これだと1.8だったので下のリンクを見てinstall
+https://gist.github.com/P7h/91e14096374075f5316e
 - `https://github.com/thewtex/tmux-mem-cpu-load.git` clone
 - `sudo apt-get install cmake`
 
@@ -116,7 +124,7 @@ http://qiita.com/katsukii/items/9fd5bbe822904d7cdd0a
 - colordiff
 
 ---
-# 明日やることsv
+# 明日やること
 - ruby
 - rails
 - texlive
@@ -127,5 +135,42 @@ http://qiita.com/katsukii/items/9fd5bbe822904d7cdd0a
 * * *
 
 # ここからが本番 Rails 環境を整える!
+
+- ` git clone https://github.com/sstephenson/rbenv.git ~/.rbenv`
+- `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc` zshrc に書いてあるからスキップ
+- `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
+- `git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build`
+- ` sudo apt-get install libssl-dev`
+```
+sudo apt-get install curl g++
+sudo apt-get install zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+sudo apt-get install sqlite3 libsqlite3-dev nodejssudo apt-get install zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev
+sudo apt-get install sqlite3 libsqlite3-dev nodejs
+```
+- `rbenv install 2.2.2`
+- `rbenv rehash`
+- `rbenv global 2.2.2`
+
+
+## Rails
+- curses がないとき `sudo apt-get install libncurses5-dev`
+- `sudo apt-get install mysql-server` mysql
+- `sudo apt-get install libmysqld-dev ` mysql2 
+
+
+
+## texlive
+
+```
+# リポジトリを追加
+sudo apt-add-repository ppa:texlive-backports/ppa
+
+# パッケージ情報を更新
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install texlive-lang-cjk
+```
+
+latexmk jlisting 適当に
 
 
