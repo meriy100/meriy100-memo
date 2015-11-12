@@ -105,6 +105,7 @@ Hash model
 |-|-|-|-|-|
 |user_id|integer|ユーザID|not null||
 |price|integer|金額|not null||
+|date|date|日付|not null||
 |from_wallet_id|integer|送金元|not null||
 |to_wallet_id|integer|送金先|not null||
 |commission|integer|手数料|default null||
