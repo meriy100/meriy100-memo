@@ -110,3 +110,18 @@ Hash model
 |to_wallet_id|integer|送金先|not null||
 |commission|integer|手数料|default null||
 
+
+
+## recode
+### 記入
+|物理名|型|論理名|オプション|備考|
+|-|-|-|-|-|
+|user_id|integer|ユーザID|not null||
+|recode_type|integer|レコードタイプ|not null||
+|price|integer|金額|not null||
+|date|date|日付|not null||
+|sub_category_id|integer | |default null| |
+|remarks|text|備考|default null| |
+|from_wallet_id|integer|出金先|not null||
+|to_wallet_id|integer|送金先|default null|recode_type: 3 のみ|
+|commission|integer|手数料|default null|recode_type: 3 のみ|
