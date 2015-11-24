@@ -174,3 +174,7 @@ sudo apt-get install texlive-lang-cjk
 latexmk jlisting 適当に
 
 
+***
+2015/11/24 追記
+- kazam install
+
