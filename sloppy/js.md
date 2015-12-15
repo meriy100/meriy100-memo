@@ -70,3 +70,9 @@ $('[name=alphabet]').change(function() {
 ```
 http://qiita.com/tomcky/items/8f1868f1fb963732de39
 
+### 要素の親Fromを取得
+```coffee
+    $form = $(e.currentTarget).parents('form')
+```
+
+
