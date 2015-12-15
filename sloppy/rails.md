@@ -37,3 +37,7 @@ http://www.task-notes.com/entry/20140713/1405242506
 ２，アップロード(gem: paperclip)
 ３，表示(image_tagか何かで２でuploadしたものを呼び出す)
 
+### hidden_field の値をそこで入れる
+```erb
+<%= f.hidden_field :propaty, value: "value" %>
+```
